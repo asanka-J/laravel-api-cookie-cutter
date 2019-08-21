@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\v2;
 
-use Illuminate\Http\Request;
+
 use App\People;
 use App\Http\Resources\PeopleResource;
 use App\Http\Resources\PeopleResourceCollection;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 
 class PeopleController extends Controller
