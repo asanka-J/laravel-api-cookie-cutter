@@ -17,7 +17,8 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-Route::get('/people', 'PeopleController@index');
-Route::get('/people/{people}', 'PeopleController@show');
+// Route::get('/people', 'PeopleController@index');
+// Route::get('/people/{people}', 'PeopleController@show');
 
-// Route::apiResource('/people', 'PeopleController');
+
+Route::apiResource('/people', 'PeopleController');

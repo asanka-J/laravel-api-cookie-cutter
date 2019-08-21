@@ -10,16 +10,48 @@ use App\Http\Resources\PeopleResourceCollection;
 
 class PeopleController extends Controller
 {
-    public function show(People $people):PeopleResource {
+    public function show(People $person):PeopleResource {
        
-        return new PeopleResource($people);
+        return new PeopleResource($person);
     }
-
-
 
 
     public function index():PeopleResourceCollection {
        
         return new PeopleResourceCollection(People::paginate());
     }
+
+    public function store(Request $request):PeopleResource {
+      
+        $request->validate([
+            'firstName'     => 'required',
+            'lastName'      => 'required',
+            'phone'         => 'required',
+            'email'         => 'required',
+            'city'          => 'required',
+        ]);
+        
+        $people=People::create($request->all());
+
+        return new PeopleResource($people);
+    }
+
+    public function update( People $person,Request $request):PeopleResource {
+       
+         
+        $person->update($request->all());
+
+        return new PeopleResource($person);
+    }
+    
+    
+    public function destroy( People $person):PeopleResource {
+       
+         
+        $person->delete();
+
+        return new PeopleResource($person);
+    }
+
+
 }
